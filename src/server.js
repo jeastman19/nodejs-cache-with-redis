@@ -11,6 +11,8 @@ app.get("/", (req, res) => {
 
 app.use(withoutCacheRoutes);
 
+console.clear();
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
