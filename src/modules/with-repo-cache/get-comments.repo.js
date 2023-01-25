@@ -3,8 +3,6 @@ const axios = require("axios");
 const { Cache } = require("../cache");
 
 const GetCommentsRepo = () => async (postId) => {
-    Cache.init();
-
     const key = `comments:${postId}`;
 
     const cachedValue = await Cache.get(key);

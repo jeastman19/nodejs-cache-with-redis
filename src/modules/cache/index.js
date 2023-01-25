@@ -31,6 +31,10 @@ const Cache = {
         return await Cache.client.get(key);
     },
 
+    getSync: (key, cb) => {
+        Cache.client.get(key, cb);
+    },
+
     set: async (key, value) => {
         return await Cache.client.set(key, value);
     },
@@ -43,5 +47,7 @@ const Cache = {
         return await Cache.client.quit();
     },
 };
+
+Cache.init();
 
 module.exports = { Cache };
