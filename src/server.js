@@ -1,6 +1,7 @@
 const express = require("express");
 
 const withoutCacheRoutes = require("./modules/without-cache/router");
+const withRepoCacheRoutes = require("./modules/with-repo-cache/router");
 
 const app = express();
 const port = 3000;
@@ -10,6 +11,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(withoutCacheRoutes);
+app.use(withRepoCacheRoutes);
 
 console.clear();
 
