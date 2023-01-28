@@ -36,7 +36,7 @@ const Cache = {
     },
 
     set: async (key, value) => {
-        return await Cache.client.set(key, value);
+        return await Cache.client.set(key, value, { ex: 10, nx: true });
     },
 
     del: async (key) => {
