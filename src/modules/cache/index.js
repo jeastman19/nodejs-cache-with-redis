@@ -1,17 +1,9 @@
 const redis = require("redis");
 
-const onRedisError = (err) => {
-    console.error(err);
-};
-const onRedisConnect = () => {
-    console.log("Redis connected");
-};
-const onRedisReconnecting = () => {
-    console.log("Redis reconnecting");
-};
-const onRedisReady = () => {
-    console.log("Redis ready!");
-};
+const onRedisError = (err) => console.error;
+const onRedisConnect = () => console.log("Redis connected");
+const onRedisReconnecting = () => console.log("Redis reconnecting");
+const onRedisReady = () => console.log("Redis ready!");
 
 const Cache = {
     client: null,
