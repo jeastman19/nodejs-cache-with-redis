@@ -31,3 +31,47 @@ Este ejemplo está dividido en tres partes, el código para cada uno es el mismo
 2. **Consulta con caché en repositorio**: en este caso, el repositorio consulta en primera instancia si los datos están la caché, de ser así, los retorno, en caso contrario, se consulta la base de datos, se almacena en caché el resultado y se retorna al cliente, esto mejora el rendimiento en las siguientes consultas, que obtendrá los datos desde la caché y no desde la DB.
 
 3. **Consulta con caché en endpoint**: este módulo muestra un uso diferente de Redis como caché, en este caso, el endpoint consulta en primera instancia si los datos están la caché, de ser así, los retorno, en caso contrario, se consulta la base de datos, se almacena en caché el resultado y se retorna al cliente, esto mejora el rendimiento en las siguientes consultas, que obtendrá los datos desde la caché y no desde la DB, evitando todo el flujo, especialmente útil cuando los datos obtenidos de la DB son procesados por la aplicación antes de ser retornados.
+
+# Uso
+
+## Clonar el proyecto
+
+Para clonar el proyecto, ejecutar el siguiente comando:
+
+```bash
+git clone git@github.com:jeastman19/nodejs-chace-with-redis.git
+```
+
+## Instalar dependencias
+
+Para instalar las dependencias, ejecutar el siguiente comando:
+
+```bash
+npm install
+```
+
+## Configurar Redis
+
+Si no tienes una instancia de Redis, puedes instanciarla con Docker utilizando el archivo **_docker-compose.yaml_** que se encuentra en la raíz del proyecto, para ello, ejecutar el siguiente comando:
+
+```bash
+docker-compose up -d
+```
+
+El proyecto se conecta por defecto a una instancia local de Redis, con lo cual no se requiere de modificaciones, es solo un ejemplo, en producción se recomienda utilizar una instancia de Redis en la nube y variables de entorno para establecer los parámetros de conexión.
+
+## Ejecutar el proyecto
+
+Para ejecutar el proyecto, ejecutar el siguiente comando:
+
+```bash
+npm run dev
+```
+
+## Probar el proyecto
+
+Los endpoints que se pueden probar son:
+
+## Origen de los datos
+
+[{JSON} Placeholder](https://jsonplaceholder.typicode.com/)

@@ -1,12 +1,14 @@
+const { getCurrentTimeInMilliseconds } = require("../helpers");
+const { formatResponse } = require("../helpers/format-response");
+
 const GetCommentsController = (service) => async (req, res) => {
     const postId = req.params.postId;
 
-    const ini = new Date().getMilliseconds();
+    const ini = getCurrentTimeInMilliseconds();
     const results = await service(postId);
-    const end = new Date().getMilliseconds();
+    const end = getCurrentTimeInMilliseconds();
 
-    console.log(`Controller time: ${end - ini}ms`);
-    res.status(200).json(results);
+    res.status(200).send(formatResponse({ ini, end, results }));
 };
 
 module.exports = { GetCommentsController };

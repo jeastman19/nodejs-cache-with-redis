@@ -31,12 +31,11 @@ const Cache = {
         return await Cache.client.get(key);
     },
 
-    getSync: (key, cb) => {
-        Cache.client.get(key, cb);
-    },
-
     set: async (key, value) => {
-        return await Cache.client.set(key, value, { ex: 10, nx: true });
+        return await Cache.client.set(key, value, {
+            EX: 10,
+            NX: true,
+        });
     },
 
     del: async (key) => {

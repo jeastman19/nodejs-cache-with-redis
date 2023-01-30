@@ -1,12 +1,17 @@
+const { Cache } = require("../cache");
+const { formatResponse, getCurrentTimeInMilliseconds } = require("../helpers");
+
 const GetCommentsController = (service) => async (req, res) => {
     const postId = req.params.postId;
+    const key = `comments:${postId}`;
 
-    const ini = new Date().getMilliseconds();
+    const ini = getCurrentTimeInMilliseconds();
     const results = await service(postId);
-    const end = new Date().getMilliseconds();
+    const end = getCurrentTimeInMilliseconds();
 
-    console.log(`Controller time: ${end - ini}ms`);
-    res.status(200).json(results);
+    Cache.set(key, JSON.stringify(results));
+
+    res.status(200).json(formatResponse({ ini, end, results }));
 };
 
 module.exports = { GetCommentsController };
